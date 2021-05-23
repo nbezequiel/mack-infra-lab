@@ -4,9 +4,10 @@ WORKDIR /code
 
 COPY requirements.txt .
 
-RUN cd /mack-infra-lab/ && pip install -r requirements.txt
+RUN pip install -r requirements.txt
 
-COPY src/ .
+COPY ./src/ /code/
 
-# command to run on container start
-CMD [ "python", "./server.py" ]
+ENTRYPOINT  [ "python", "./server.py" ]
+
+EXPOSE 5000
